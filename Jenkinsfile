@@ -2,19 +2,19 @@ pipeline {
   agent any
   stages {
     stage('SonarQube analysis') {
-        echo '${WORKSPACE}'
-        // requires SonarQube Scanner 2.8+
-        def scannerHome = tool 'sonarqube-scanner';
-        withSonarQubeEnv('sonarqube-server') {
-          sh "${scannerHome}/bin/sonar-scanner " +
-            "-Dsonar.projectKey=magento2:demo:pipeline " +
-            "-Dsonar.projectName=Magento2-Demo-Project2-pipeline " +
-            "-Dsonar.sources=. " +
-            "-Dsonar.projectVersion=1.0 " +
-            "-Dsonar.language=php " +
-            "-Dsonar.sources=./code " +
-            "-Dsonar.sourceEncoding=UTF-8 "
-        }
+      echo '${WORKSPACE}'
+      // requires SonarQube Scanner 2.8+
+      def scannerHome = tool 'sonarqube-scanner';
+      withSonarQubeEnv('sonarqube-server') {
+        sh "${scannerHome}/bin/sonar-scanner " +
+          "-Dsonar.projectKey=magento2:demo:pipeline " +
+          "-Dsonar.projectName=Magento2-Demo-Project2-pipeline " +
+          "-Dsonar.sources=. " +
+          "-Dsonar.projectVersion=1.0 " +
+          "-Dsonar.language=php " +
+          "-Dsonar.sources=./code " +
+          "-Dsonar.sourceEncoding=UTF-8 "
+      }
     }
     // No need to occupy a node
     stage("Quality Gate") {
