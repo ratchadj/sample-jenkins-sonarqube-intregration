@@ -1,1 +1,1 @@
-# test-sonarqube
+# Setup Jenkins for integrating with sonarqube
